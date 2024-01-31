@@ -3,14 +3,11 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tb_history_lelangs', {
-      id: {
+      id_history: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      id_history: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       id_lelang: {
         type: Sequelize.INTEGER

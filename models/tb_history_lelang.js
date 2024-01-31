@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tb_history_lelang.init({
-    id_history: DataTypes.INTEGER,
+    id_history: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     id_lelang: DataTypes.INTEGER,
     id_barang: DataTypes.INTEGER,
     id_user: DataTypes.INTEGER,

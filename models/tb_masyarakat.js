@@ -14,9 +14,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tb_masyarakat.init({
-    id_user: DataTypes.INTEGER,
+    id_user: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     nama_lengkap: DataTypes.STRING,
-    username: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+      unique: true, // Menambahkan properti unique
+    },
     password: DataTypes.STRING,
     telp: DataTypes.STRING
   }, {

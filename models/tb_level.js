@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tb_level.init({
-    id_level: DataTypes.INTEGER,
+    id_level: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     level: {
       type: DataTypes.ENUM,
       values: ['administrator','petugas']

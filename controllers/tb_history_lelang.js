@@ -1,9 +1,9 @@
-// File: controllers/tb_petugas.js
-const { tb_petugas } = require("../models");
+// File: controllers/tb_history_lelang.js
+const { tb_history_lelang } = require("../models");
 
 exports.getAll = async (req, res) => {
   try {
-    const data = await tb_petugas.findAll();
+    const data = await tb_history_lelang.findAll();
     res.json(data);
   } catch (err) {
     console.error(err);
@@ -14,7 +14,7 @@ exports.getAll = async (req, res) => {
 exports.getById = async (req, res) => {
   try {
     const id = req.params.id;
-    const data = await tb_petugas.findByPk(id);
+    const data = await tb_history_lelang.findByPk(id);
     if (data) {
       res.json(data);
     } else {
@@ -28,12 +28,12 @@ exports.getById = async (req, res) => {
 
 exports.create = async (req, res) => {
   try {
-    const { nama_petugas, username, password, id_level } = req.body;
-    const data = await tb_petugas.create({
-      nama_petugas,
-      username,
-      password,
-      id_level,
+    const { id_lelang, id_barang, id_user, penawaran_harga } = req.body;
+    const data = await tb_history_lelang.create({
+      id_lelang,
+      id_barang,
+      id_user,
+      penawaran_harga,
     });
     res.status(201).json(data);
   } catch (err) {
@@ -45,16 +45,16 @@ exports.create = async (req, res) => {
 exports.update = async (req, res) => {
   try {
     const id = req.params.id;
-    const { nama_petugas, username, password, id_level } = req.body;
-    const data = await tb_petugas.update(
+    const { id_lelang, id_barang, id_user, penawaran_harga } = req.body;
+    const data = await tb_history_lelang.update(
       {
-        nama_petugas,
-        username,
-        password,
-        id_level,
+        id_lelang,
+        id_barang,
+        id_user,
+        penawaran_harga,
       },
       {
-        where: { id_petugas: id },
+        where: { id_history: id },
       }
     );
     if (data[0] === 1) {
@@ -71,8 +71,8 @@ exports.update = async (req, res) => {
 exports.delete = async (req, res) => {
   try {
     const id = req.params.id;
-    const data = await tb_petugas.destroy({
-      where: { id_petugas: id },
+    const data = await tb_history_lelang.destroy({
+      where: { id_history: id },
     });
     if (data === 1) {
       res.send("Delete successful");

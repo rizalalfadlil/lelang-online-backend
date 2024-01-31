@@ -38,7 +38,17 @@ exports.create = async (req, res) => {
     res.status(201).json(data);
   } catch (err) {
     console.error(err);
-    res.status(500).send("Internal server error");
+    // Check if error is caused by unique constraint violation
+    if (err.name === "SequelizeUniqueConstraintError") {
+      // Get the field and value that caused the error
+      const field = err.errors[0].path;
+      const value = err.errors[0].value;
+      // Send error message
+      res.status(400).send(`Username ${value} telah digunakan`);
+    } else {
+      // Send generic error message
+      res.status(500).send("Internal server error");
+    }
   }
 };
 

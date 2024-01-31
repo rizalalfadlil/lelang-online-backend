@@ -57,7 +57,7 @@ exports.update = async (req, res) => {
         where: { id_barang: id },
       }
     );
-    if (data[0] === 1) {
+    if (data) {
       res.send("Update successful");
     } else {
       res.status(404).send("Data not found");

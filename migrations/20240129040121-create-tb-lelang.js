@@ -3,13 +3,10 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable('tb_lelangs', {
-      id: {
+      id_lelang: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      id_lelang: {
         type: Sequelize.INTEGER
       },
       id_barang: {

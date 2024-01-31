@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tb_barang.init({
-    id_barang: DataTypes.INTEGER,
+    id_barang:{
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     nama_barang: DataTypes.STRING,
     tgl: DataTypes.DATE,
     harga_awal: DataTypes.INTEGER,

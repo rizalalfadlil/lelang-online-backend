@@ -14,9 +14,16 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tb_petugas.init({
-    id_petugas: DataTypes.INTEGER,
+    id_petugas: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     nama_petugas: DataTypes.STRING,
-    username: DataTypes.STRING,
+    username: {
+      type: DataTypes.STRING,
+      unique: true, // Menambahkan properti unique
+    },
     password: DataTypes.STRING,
     id_level: DataTypes.INTEGER
   }, {
