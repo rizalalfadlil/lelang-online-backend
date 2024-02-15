@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require('cors')
 const app = express();
 const port = 8000;
+const router = express.Router();
 
 app.use(cors());
 app.use(express.json());
@@ -15,6 +16,7 @@ const tb_history_lelangRouter = require("./routes/tb_history_lelang");
 const tb_petugasRouter = require("./routes/tb_petugas");
 const tb_levelRouter = require("./routes/tb_level");
 const loginRouter = require("./routes/login");
+const uploadController = require("./controllers/uploadController");
 
 // Use routers
 app.use("/api/tb_masyarakat", tb_masyarakatRouter);
@@ -24,6 +26,8 @@ app.use("/api/tb_history_lelang", tb_history_lelangRouter);
 app.use("/api/tb_petugas", tb_petugasRouter);
 app.use("/api/tb_level", tb_levelRouter);
 app.use("/api/login", loginRouter);
+
+router.post("/upload/:id", uploadController.upload); // Upload process
 
 // Listen to port
 app.listen(port, () => {
